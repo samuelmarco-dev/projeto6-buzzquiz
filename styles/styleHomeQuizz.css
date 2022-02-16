@@ -1,0 +1,83 @@
+/*classes globais*/
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*header*/
+
+header h1{
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+    color: #FFFFFF;
+}
+/*css Home-quizz*/
+.home-quizz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 69px;
+}
+/*css do container para todos os quizzes*/
+.all-quizzes, .your-quizzes{
+    padding-top: 38px;
+}
+.all-quizzes h2, .your-quizzes h2{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+/*css para exibição do quadro de "criar quizz" para primeiro acesso do usuário*/
+.no-quizz{
+    width: 340px;
+    height: 181px;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-top: 14px;
+}
+.no-quizz p{
+    font-size: 20px;
+    line-height: 23px;
+    color: #B9B9B9;
+}
+.no-quizz button{
+    width: 151px;
+    height: 40px;
+    font-size: 21px;
+    line-height: 25px;
+    color: #EC362D;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+}
+/*css para apresentação do quiz individual*/
+.quizz{
+    position: relative;
+    width: 340px;
+    height: 181px;
+    margin-top: 14px;
+}
+/*Para se aplicar gradiente na imagem, a mesma deverá ser definida como background-image ... 
+                    Exemplo: background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(image-url);
+*/
+.quizz img{
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+}
+.quizz p{
+    position: absolute;
+    bottom: 7px;
+    left: 18px;
+    color: white;
+    font-size: 19px;
+    line-height: 22px;
+}
+/*classes de controle*/
+.hidden{
+    display:none;
+}
