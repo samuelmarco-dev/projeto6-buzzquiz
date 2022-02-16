@@ -11,6 +11,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo-tela);
 }
 
 /* ESTILIZAÇÃO HEADER */
@@ -34,7 +35,6 @@ header p{
 
 /* ESTILIZAÇÃO SECTION QUE ENVOLVE AS 4 TELAS DE CRIAÇÃO */
 .criacao-de-quizz{
-    background-color: var(--cor-fundo-tela);
     height: 100%;
 }
 
@@ -188,12 +188,11 @@ button strong{
     justify-content: center;
     align-items: center;
     margin-top: 29px;
-    background-color: aqua;
     position: relative;
 }
 
 .confirmar-quizz figure img{
-    width: 280px;
+    width: 300px;
     border-radius: 5px;
 }
 
@@ -238,4 +237,16 @@ button strong{
 
 .hidden{
     display: none;
+}
+
+@media (min-width: 768px) {
+    .criacao-de-quizz .informacoes-basicas, .criacao-de-quizz .criacao-perguntas,
+    .criacao-de-quizz .criacao-niveis, .criacao-de-quizz .confirmar-quizz{
+        width: 60%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    button{
+        width: 40%;
+    }
 }
