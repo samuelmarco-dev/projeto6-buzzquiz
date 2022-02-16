@@ -62,15 +62,15 @@
 
                 <div class="input-informacoes-basicas">
                     <div>
-                        <input type="text" placeholder="Título do seu quizz">
+                        <input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65">
                         <input type="text" placeholder="URL da imagem do seu quizz">
-                        <input type="text" placeholder="Quantidade de perguntas quizz">
-                        <input type="text" placeholder="Quantidade de níveis do quizz">
+                        <input type="number" placeholder="Quantidade de perguntas quizz">
+                        <input type="number" placeholder="Quantidade de níveis do quizz">
                     </div>
                 </div>
                 
                 <div class="flex">
-                    <button>
+                    <button onclick="entrarTelaCriacaoPerguntas(this)">
                         <strong>Prosseguir pra criar perguntas</strong>
                     </button>
                 </div>
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="flex">
-                    <button>
+                    <button onclick="entrarTelaCriacaoNiveis(this)">
                         <strong>Prosseguir pra criar perguntas</strong>
                     </button>
                 </div>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="flex">
-                    <button>
+                    <button onclick="entrarTelaConfirmarQuizz(this)">
                         <strong>Finalizar Quizz</strong>
                     </button>
                 </div>
@@ -185,7 +185,7 @@
                         <strong>Acessar Quizz</strong>
                     </button>
                 </div>
-                <div class="voltar-home">
+                <div class="voltar-home" onclick="voltarParaHome(this)">
                     <p>Voltar pra home</p>
                 </div>
 

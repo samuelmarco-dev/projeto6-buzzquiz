@@ -235,8 +235,8 @@ button strong{
     display: none;
 }
 
-.hidden{
-    display: none;
+input:invalid{
+    border-color: rgb(238, 38, 38);
 }
 
 @media (min-width: 768px) {
