@@ -2,15 +2,6 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
-
-/*header*/
-
-header h1{
-    font-weight: 700;
-    font-size: 37px;
-    line-height: 43px;
-    color: #FFFFFF;
-}
 /*css Home-quizz*/
 .home-quizz{
     display: flex;
