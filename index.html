@@ -29,6 +29,9 @@
 
     <main>
 
+        <header class="flex">
+            <p>BuzzQuizz</p>
+        </header>
 
         <section class="home-quizz">
             <div class="your-quizzes">
@@ -48,8 +51,147 @@
                 </div>
             </div>
         </section>
+        
         <section></section>
-        <section></section>
+        
+        <section class="criacao-de-quizz escondido">
+            
+            <article class="informacoes-basicas escondido">
+
+                <p class="topo">Comece pelo começo</p>
+
+                <div class="input-informacoes-basicas">
+                    <div>
+                        <input type="text" placeholder="Título do seu quizz">
+                        <input type="text" placeholder="URL da imagem do seu quizz">
+                        <input type="text" placeholder="Quantidade de perguntas do quizz">
+                        <input type="text" placeholder="Quantidade de níveis do quizz">
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <button>
+                        <strong>Prosseguir pra criar perguntas</strong>
+                    </button>
+                </div>
+
+            </article>
+            
+            <article class="criacao-perguntas escondido">
+                
+                <p class="topo">Comece pelo começo</p>
+
+                <div class="pergunta">
+                    <div class="visualizacao-inicial">
+                        <p>Pergunta</p>
+                        <ion-icon class="" name="create-outline"></ion-icon>
+                    </div>
+                    <section class="escondido">
+                    <div>
+                        <input type="text" placeholder="Texto da pergunta">
+                        <input type="text" placeholder="Cor de fundo da pergunta">
+                    
+                        <div class="resposta-correta">
+                            <p>Resposta correta</p>
+
+                            <input type="text" placeholder="Resposta correta">
+                            <input type="text" placeholder="URL da imagem">
+
+                        </div>
+                        
+                        <div class="resposta-incorreta">
+                            <p>Respostas incorretas</p>
+
+                            <input type="text" placeholder="Resposta incorreta">
+                            <input type="text" placeholder="URL da imagem">
+
+                        </div>
+                    </div>
+                    </section>
+                </div>
+                
+                <div class="pergunta">
+                    <div class="visualizacao-inicial">
+                        <p>Pergunta</p>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="pergunta">
+                    <div class="visualizacao-inicial">
+                        <p>Pergunta</p>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <button>
+                        <strong>Prosseguir pra criar perguntas</strong>
+                    </button>
+                </div>
+
+            </article>
+            
+            <article class="criacao-niveis escondido">
+                <p class="topo">Agora, decida os níveis!</p>
+
+                <div class="niveis">
+                    <div class="visualizacao-inicial">
+                        <p>Nível</p>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                    
+                    <section class="escondido">
+                        <input type="text" placeholder="Título do seu quizz">
+                        <input type="text" placeholder="% de acerto mínima">
+                        <input type="text" placeholder="URL da imagem do nível">
+                        <textarea wrap="soft" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
+                    </section>
+
+                </div>
+
+                <div class="niveis">
+                    <div class="visualizacao-inicial">
+                        <p>Nível</p>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </div>
+                
+                <div class="niveis">
+                    <div class="visualizacao-inicial">
+                        <p>Nível</p>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <button>
+                        <strong>Finalizar Quizz</strong>
+                    </button>
+                </div>
+
+            </article>
+            
+            <article class="confirmar-quizz escondido">
+                <p class="topo">Seu quizz está pronto</p>
+
+                <figure>
+                    <img src="./assets/logo-quizz-web.png" alt="Imagem Quizz">
+                    <figcaption>Quizz</figcaption>
+                </figure>
+                
+
+                <div class="flex">
+                    <button>
+                        <strong>Acessar Quizz</strong>
+                    </button>
+                </div>
+                <div class="voltar-home">
+                    <p>Voltar pra home</p>
+                </div>
+
+            </article>
+
+        </section>
 
     </main>
 
