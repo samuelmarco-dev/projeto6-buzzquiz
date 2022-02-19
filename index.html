@@ -34,25 +34,35 @@
         </header>
 
         <section class="home-quizz">
-            <div class="your-quizzes">
-                <h2>Seus Quizzes</h2>
-                <div class="quizzesList">
-                    <!--aqui será aberto os quizzes do usuário-->
-                    <article class="no-quizz">
-                        <p>Você não criou nenhum <br> quizz ainda :(</p>
-                        <button class="criar-quizz">Criar Quizz</button>
-                    </article>
+            <div class="seus-quizzes">
+                <div class="quisezzs-locais-opcoes">
+                    <h2>Seus Quizzes</h2>
+                    <ion-icon onclick="criarQuizz()" name="add-circle"></ion-icon>
                 </div>
+                <div class="quizzes-lista"></div>
             </div>
-            <div class="all-quizzes">
+            <div class="todos-quizzes">
                 <h2>Todos os Quizzes:</h2>
-                <div class="quizzesList">     
+                <div class="quizzesLista">     
                     <!--aqui será aberto os quizzes em geral-->
                 </div>
             </div>
         </section>
         
-        <section></section>
+        <section class="exibicao-quizz escondido">
+            <div class="imagem-topo">
+                <!--aqui ficará a imagem do topo e o título do quiz-->
+            </div>
+            <div class="exibicao-perguntas">
+                <!--aqui ficará as perguntas e as respostas-->
+            </div>
+            <div class="resultado-do-quizz escondido">
+                <div class="titulo-do-resultado">
+                    <!--aqui ficará o título do level-->
+                </div>
+                <!--aqui ficará a imagem e o texto do level-->
+            </div>
+        </section>
         
         <section class="criacao-de-quizz escondido">
             
