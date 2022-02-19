@@ -108,6 +108,7 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
             "levels": objetoDeLevels
         };
         navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
+        mostrarFigureQuizzCriado();
 
         axios.post(urlDeEnvio, objetoQuizzCriado)
         .then((resposta)=>{
@@ -115,7 +116,7 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
         })
         .catch((erro)=>{
             console.log(erro.response);
-            // location.reload(true);
+            location.reload(true);
         })
 
     }else{
@@ -123,12 +124,8 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
     }
 }
 
-function voltarParaHome(retornaHome){
-    const sairTelaCriacaoQuizz = retornaHome.parentNode.parentNode;
-    sairTelaCriacaoQuizz.classList.add('escondido');
-
-    const retornaTelaInicial = document.querySelector('.home-quizz');
-    retornaTelaInicial.classList.remove('escondido');
+function voltarParaHome(){
+    location.reload(true);
 }
 
 // Verificação Tela de Informações básicas do Quizz
@@ -581,4 +578,18 @@ function aceitarPorcentagemMinimaDeNiveis(){
         alert('Pelo menos um nível deve ter porcentagem mínima 0%');
         booleanAceitarPorcentagemMinima = false;
     }
+}
+
+function mostrarFigureQuizzCriado(){
+    const figureDoQuizzCriado = document.querySelector('.confirmar-quizz figure');
+    console.log(figureDoQuizzCriado);
+    figureDoQuizzCriado.innerHTML = `
+        <div>
+            <figcaption>${tituloQuizz}</figcaption>
+        </div>
+    `;
+
+    const gradienteImagem = figureDoQuizzCriado.querySelector('div');
+    console.log(gradienteImagem);
+    gradienteImagem.style.background = `linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), no-repeat center/100% url(${urlQuizz})`;
 }
