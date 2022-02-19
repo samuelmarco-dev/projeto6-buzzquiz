@@ -48,8 +48,10 @@ let descricaoDoNivel;
 let auxiliarPorcentagemMinima = 0;
 
 let objetoQuizzCriado = {};
-let objetoDeQuestions = {};
-let objetoDeLevels = {};
+let objetoDeQuestions = [];
+let objetoDeLevels = [];
+
+const urlDeEnvio = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes';
 
 function navegarEntreTelas(botaoClicado, seletorTela){
     const sairTelaAtual = botaoClicado.parentNode.parentNode;
@@ -71,8 +73,8 @@ function entrarTelaCriacaoPerguntas(prosseguirPerguntas){
         objetoQuizzCriado = {
             "title": tituloQuizz,
             "image": urlQuizz,
-            "questions": [objetoDeQuestions],
-            "levels": []
+            "questions": objetoDeQuestions,
+            "levels": objetoDeLevels
         };
     }else{
         alert('Por favor, insira os dados corretamente para a criaçao de um Quizz!');
@@ -87,8 +89,8 @@ function entrarTelaCriacaoNiveis(prosseguirNiveis){
         objetoQuizzCriado = {
             "title": tituloQuizz,
             "image": urlQuizz,
-            "questions": [objetoDeQuestions],
-            "levels": []
+            "questions": objetoDeQuestions,
+            "levels": objetoDeLevels
         };
     }else{
         alert('Por favor, insira os dados corretamente para a criaçao de um Quizz!');
@@ -99,13 +101,23 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
     verificarInformacoesNivel();
     aceitarPorcentagemMinimaDeNiveis();
     if(booleanTituloNivel === true && booleanUrlNivel === true && booleanAcertoDoNivel === true && booleanDescricaoNivel === true && booleanAceitarPorcentagemMinima){
-        navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
         objetoQuizzCriado = {
             "title": tituloQuizz,
             "image": urlQuizz,
-            "questions": [objetoDeQuestions],
-            "levels": [objetoDeLevels]
+            "questions": objetoDeQuestions,
+            "levels": objetoDeLevels
         };
+        navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
+
+        axios.post(urlDeEnvio, objetoQuizzCriado)
+        .then((resposta)=>{
+            console.log(resposta.data);
+        })
+        .catch((erro)=>{
+            console.log(erro.response);
+            // location.reload(true);
+        })
+
     }else{
         alert('Por favor, insira os dados corretamente para a criaçao de um Quizz!');
     }
@@ -569,12 +581,4 @@ function aceitarPorcentagemMinimaDeNiveis(){
         alert('Pelo menos um nível deve ter porcentagem mínima 0%');
         booleanAceitarPorcentagemMinima = false;
     }
-}
-
-function enviarQuizzAoServidor(){
-    const urlDeEnvio = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes';
-
-    axios.post(urlDeEnvio, objetoQuizzCriado)
-    .then()
-    .catch()
 }
