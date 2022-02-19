@@ -224,6 +224,15 @@ button strong{
     color: var(--cor-voltar-home);
 }
 
+/* INPUTS OBRIGATÓRIOS */
+span{    
+    color: #f14141;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-style: italic;
+    font-variant: small-caps;
+}
+
 /* CLASSES DE MANIPULAÇÂO */
 .flex{
     display: flex;
@@ -239,6 +248,10 @@ input:invalid{
     border-color: rgb(238, 38, 38);
 }
 
+textarea:invalid{
+    border-color: rgb(238, 38, 38);
+}
+
 @media (min-width: 768px) {
     .criacao-de-quizz .informacoes-basicas, .criacao-de-quizz .criacao-perguntas,
     .criacao-de-quizz .criacao-niveis, .criacao-de-quizz .confirmar-quizz{
@@ -247,6 +260,7 @@ input:invalid{
         margin: 0 auto;
     }
     button{
-        width: 40%;
+        width: 50%;
     }
 }
+/* required */

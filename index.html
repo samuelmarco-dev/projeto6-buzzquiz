@@ -64,8 +64,8 @@
                     <div>
                         <input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65">
                         <input type="text" placeholder="URL da imagem do seu quizz">
-                        <input type="number" placeholder="Quantidade de níveis do quizz" min="3">
-                        <input type="number" placeholder="Quantidade de perguntas quizz" min="2">
+                        <input type="number" placeholder="Quantidade de perguntas quizz" min="3">
+                        <input type="number" placeholder="Quantidade de níveis do quizz" min="2">
                     </div>
                 </div>
                 
@@ -77,7 +77,7 @@
 
             </article>
             
-            <article class="criacao-perguntas">
+            <article class="criacao-perguntas escondido">
                 
                 <p class="topo">Comece pelo começo</p>
 
@@ -85,60 +85,17 @@
 
                 <div class="flex">
                     <button onclick="entrarTelaCriacaoNiveis(this)">
-                        <strong>Prosseguir pra criar perguntas</strong>
+                        <strong>Prosseguir pra criar níveis</strong>
                     </button>
                 </div>
 
             </article>
             
-            <article class="criacao-niveis escondido">
+            <article class="criacao-niveis">
                 <p class="topo">Agora, decida os níveis!</p>
 
-                <div class="niveis">
-                    <div class="visualizacao-inicial" onclick="acessarOpcoes(this)">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                    
-                    <section class="escondido">
-                        <input type="text" placeholder="Título do seu quizz">
-                        <input type="text" placeholder="% de acerto mínima">
-                        <input type="text" placeholder="URL da imagem do nível">
-                        <textarea wrap="soft" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                    </section>
-
-                </div>
-
-                <div class="niveis">
-                    <div class="visualizacao-inicial" onclick="acessarOpcoes(this)">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
+                <div class="opcoes-niveis"></div>
                 
-                    <section class="escondido">
-                        <input type="text" placeholder="Título do seu quizz">
-                        <input type="text" placeholder="% de acerto mínima">
-                        <input type="text" placeholder="URL da imagem do nível">
-                        <textarea wrap="soft" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                    </section>
-
-                </div>
-                
-                <div class="niveis">
-                    <div class="visualizacao-inicial" onclick="acessarOpcoes(this)">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                
-                    <section class="escondido">
-                        <input type="text" placeholder="Título do seu quizz">
-                        <input type="text" placeholder="% de acerto mínima">
-                        <input type="text" placeholder="URL da imagem do nível">
-                        <textarea wrap="soft" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                    </section>
-
-                </div>
-
                 <div class="flex">
                     <button onclick="entrarTelaConfirmarQuizz(this)">
                         <strong>Finalizar Quizz</strong>
