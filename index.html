@@ -33,11 +33,15 @@
             <p>BuzzQuizz</p>
         </header>
 
-        <section class="home-quizz">
-            <div class="seus-quizzes">
-                <div class="quisezzs-locais-opcoes">
-                    <h2>Seus Quizzes</h2>
-                    <ion-icon onclick="criarQuizz()" name="add-circle"></ion-icon>
+        <section class="home-quizz escondido">
+            <div class="your-quizzes">
+                <h2>Seus Quizzes</h2>
+                <div class="quizzesList">
+                    <!--aqui será aberto os quizzes do usuário-->
+                    <article class="no-quizz">
+                        <p>Você não criou nenhum <br> quizz ainda :(</p>
+                        <button class="criar-quizz">Criar Quizz</button>
+                    </article>
                 </div>
                 <div class="quizzes-lista"></div>
             </div>
@@ -64,23 +68,23 @@
             </div>
         </section>
         
-        <section class="criacao-de-quizz escondido">
+        <section class="criacao-de-quizz">
             
-            <article class="informacoes-basicas escondido">
+            <article class="informacoes-basicas">
 
                 <p class="topo">Comece pelo começo</p>
 
                 <div class="input-informacoes-basicas">
                     <div>
-                        <input type="text" placeholder="Título do seu quizz">
+                        <input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65">
                         <input type="text" placeholder="URL da imagem do seu quizz">
-                        <input type="text" placeholder="Quantidade de perguntas do quizz">
-                        <input type="text" placeholder="Quantidade de níveis do quizz">
+                        <input type="number" placeholder="Quantidade de perguntas quizz" min="3">
+                        <input type="number" placeholder="Quantidade de níveis do quizz" min="2">
                     </div>
                 </div>
                 
                 <div class="flex">
-                    <button>
+                    <button onclick="entrarTelaCriacaoPerguntas(this)">
                         <strong>Prosseguir pra criar perguntas</strong>
                     </button>
                 </div>
@@ -91,51 +95,11 @@
                 
                 <p class="topo">Comece pelo começo</p>
 
-                <div class="pergunta">
-                    <div class="visualizacao-inicial">
-                        <p>Pergunta</p>
-                        <ion-icon class="" name="create-outline"></ion-icon>
-                    </div>
-                    <section class="escondido">
-                    <div>
-                        <input type="text" placeholder="Texto da pergunta">
-                        <input type="text" placeholder="Cor de fundo da pergunta">
-                    
-                        <div class="resposta-correta">
-                            <p>Resposta correta</p>
-
-                            <input type="text" placeholder="Resposta correta">
-                            <input type="text" placeholder="URL da imagem">
-
-                        </div>
-                        
-                        <div class="resposta-incorreta">
-                            <p>Respostas incorretas</p>
-
-                            <input type="text" placeholder="Resposta incorreta">
-                            <input type="text" placeholder="URL da imagem">
-
-                        </div>
-                    </div>
-                    </section>
-                </div>
-                
-                <div class="pergunta">
-                    <div class="visualizacao-inicial">
-                        <p>Pergunta</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="pergunta">
-                    <div class="visualizacao-inicial">
-                        <p>Pergunta</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                </div>
+                <div class="perguntas"></div>
 
                 <div class="flex">
-                    <button>
-                        <strong>Prosseguir pra criar perguntas</strong>
+                    <button onclick="entrarTelaCriacaoNiveis(this)">
+                        <strong>Prosseguir pra criar níveis</strong>
                     </button>
                 </div>
 
@@ -144,37 +108,10 @@
             <article class="criacao-niveis escondido">
                 <p class="topo">Agora, decida os níveis!</p>
 
-                <div class="niveis">
-                    <div class="visualizacao-inicial">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                    
-                    <section class="escondido">
-                        <input type="text" placeholder="Título do seu quizz">
-                        <input type="text" placeholder="% de acerto mínima">
-                        <input type="text" placeholder="URL da imagem do nível">
-                        <textarea wrap="soft" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                    </section>
-
-                </div>
-
-                <div class="niveis">
-                    <div class="visualizacao-inicial">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                </div>
+                <div class="opcoes-niveis"></div>
                 
-                <div class="niveis">
-                    <div class="visualizacao-inicial">
-                        <p>Nível</p>
-                        <ion-icon name="create-outline"></ion-icon>
-                    </div>
-                </div>
-
                 <div class="flex">
-                    <button>
+                    <button onclick="entrarTelaConfirmarQuizz(this)">
                         <strong>Finalizar Quizz</strong>
                     </button>
                 </div>
@@ -195,7 +132,7 @@
                         <strong>Acessar Quizz</strong>
                     </button>
                 </div>
-                <div class="voltar-home">
+                <div class="voltar-home" onclick="voltarParaHome(this)">
                     <p>Voltar pra home</p>
                 </div>
 
