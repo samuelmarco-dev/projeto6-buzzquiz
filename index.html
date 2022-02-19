@@ -43,7 +43,7 @@
             </div>
             <div class="todos-quizzes">
                 <h2>Todos os Quizzes:</h2>
-                <div class="quizzesLista">     
+                <div class="quizzesLista">    
                     <!--aqui será aberto os quizzes em geral-->
                 </div>
             </div>
@@ -65,8 +65,11 @@
         </section>
         
         <section class="criacao-de-quizz escondido">
+            
             <article class="informacoes-basicas">
+                
                 <p class="topo">Comece pelo começo</p>
+                
                 <div class="input-informacoes-basicas">
                     <div>
                         <input type="text" placeholder="Título do seu quizz" minlength="20" maxlength="65">
@@ -75,15 +78,20 @@
                         <input type="number" placeholder="Quantidade de níveis do quizz" min="2">
                     </div>
                 </div>
+                
                 <div class="flex">
                     <button onclick="entrarTelaCriacaoPerguntas(this)">
                         <strong>Prosseguir pra criar perguntas</strong>
                     </button>
                 </div>
+                
             </article>
+
             <article class="criacao-perguntas escondido">
                 <p class="topo">Comece pelo começo</p>
+
                 <div class="perguntas"></div>
+
                 <div class="flex">
                     <button onclick="entrarTelaCriacaoNiveis(this)">
                         <strong>Prosseguir pra criar níveis</strong>
@@ -92,7 +100,9 @@
             </article>
             <article class="criacao-niveis escondido">
                 <p class="topo">Agora, decida os níveis!</p>
+
                 <div class="opcoes-niveis"></div>
+                
                 <div class="flex">
                     <button onclick="entrarTelaConfirmarQuizz(this)">
                         <strong>Finalizar Quizz</strong>
