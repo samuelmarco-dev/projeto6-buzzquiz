@@ -46,6 +46,9 @@ let urlNivel;
 let descricaoDoNivel;
 
 let auxiliarPorcentagemMinima = 0;
+let idQuizzCriado;
+
+let listaDeQuizzesCriados = JSON.parse(localStorage.getItem('quizzCriado')) || [];
 
 let objetoQuizzCriado = {};
 let objetoDeQuestions = [];
@@ -67,6 +70,10 @@ function acessarOpcoes(elementoSelecionado){
 
 function entrarTelaCriacaoPerguntas(prosseguirPerguntas){
     verificarInformacoesQuizz();
+    while(booleanTituloQuizz !== true && booleanUrlQuizz !== true && booleanQtdPerguntasQuizz !== true && booleanQtdNiveisQuizz !== true){
+        verificarInformacoesQuizz();
+    }
+
     if(booleanTituloQuizz === true && booleanUrlQuizz === true && booleanQtdPerguntasQuizz === true && booleanQtdNiveisQuizz === true){
         navegarEntreTelas(prosseguirPerguntas, 'criacao-perguntas');
         renderizarPerguntasNaTela();
@@ -83,6 +90,10 @@ function entrarTelaCriacaoPerguntas(prosseguirPerguntas){
 
 function entrarTelaCriacaoNiveis(prosseguirNiveis){
     verificarInformacoesPergunta();
+    while(booleantituloPergunta !== true && booleancorHexadecimalPergunta !== true && booleanTextoRespostaCorreta !== true && booleanUrlRespostaCorreta !== true && booleanAceitarRespostaIncorreta !== true && booleanAceitarUrlRespostaIncorreta !== true){
+        verificarInformacoesPergunta();
+    }
+
     if(booleantituloPergunta === true && booleancorHexadecimalPergunta === true && booleanTextoRespostaCorreta === true && booleanUrlRespostaCorreta === true && booleanAceitarRespostaIncorreta === true && booleanAceitarUrlRespostaIncorreta === true){
         navegarEntreTelas(prosseguirNiveis, 'criacao-niveis');
         renderizarNiveisNaTela();
@@ -100,19 +111,28 @@ function entrarTelaCriacaoNiveis(prosseguirNiveis){
 function entrarTelaConfirmarQuizz(finalizarQuizz){
     verificarInformacoesNivel();
     aceitarPorcentagemMinimaDeNiveis();
-    if(booleanTituloNivel === true && booleanUrlNivel === true && booleanAcertoDoNivel === true && booleanDescricaoNivel === true && booleanAceitarPorcentagemMinima){
+    while(booleanTituloNivel !== true && booleanUrlNivel !== true && booleanAcertoDoNivel !== true && booleanDescricaoNivel !== true && booleanAceitarPorcentagemMinima !== true){
+        verificarInformacoesNivel();
+        aceitarPorcentagemMinimaDeNiveis(); 
+    }
+
+    if(booleanTituloNivel === true && booleanUrlNivel === true && booleanAcertoDoNivel === true && booleanDescricaoNivel === true && booleanAceitarPorcentagemMinima === true){
         objetoQuizzCriado = {
             "title": tituloQuizz,
             "image": urlQuizz,
             "questions": objetoDeQuestions,
             "levels": objetoDeLevels
         };
-        navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
-        mostrarFigureQuizzCriado();
-
+        
         axios.post(urlDeEnvio, objetoQuizzCriado)
         .then((resposta)=>{
+            navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
+            mostrarFigureQuizzCriado();
             console.log(resposta.data);
+            idQuizzCriado = resposta.data.id;
+
+            listaDeQuizzesCriados.push(idQuizzCriado);
+            localStorage.setItem('quizzCriado', JSON.stringify(listaDeQuizzesCriados));
         })
         .catch((erro)=>{
             console.log(erro.response);
@@ -338,6 +358,7 @@ function verificarInformacoesPergunta(){
         }
 
     }
+    aceitarCorHexadecimal();
 }
 
 function verificarInputTitulosECorPerguntas(array){
@@ -361,6 +382,15 @@ function verificarInputTitulosECorPerguntas(array){
         booleancorHexadecimalPergunta = false;
         array[1].style.border = '1px solid rgb(238, 38, 38)';
         array[1].value = "";
+    }
+}
+
+function aceitarCorHexadecimal(){
+    for(item in objetoDeQuestions){
+        console.log(item + " - " + objetoDeQuestions[item].color);
+        if((objetoDeQuestions[item].color.length !== 7) || (objetoDeQuestions[item].color.includes('#') === false)){
+            booleancorHexadecimalPergunta = false;
+        }
     }
 }
 

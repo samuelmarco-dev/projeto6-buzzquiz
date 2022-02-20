@@ -19,6 +19,7 @@ header{
     width: 100%;
     height: 69px;
     background-color: var(--cor-fundo-topo-botoes);
+    opacity: 0.98;
     position: fixed;
     top: 0;
     left: 0;
