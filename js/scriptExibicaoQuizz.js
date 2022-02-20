@@ -4,11 +4,20 @@ const criandoQuizz = document.querySelector(".criacao-de-quizz");
 const exibicaoPerguntas = document.querySelector(".exibicao-perguntas");
 let grupoDeRespostas, arrayDeRespostas=[];
 let idSelecionado, titulo,urlImagem, objetoPerguntas=[],objetoLeveis=[],acertos=0,porcentagemAcertos;
-
+//variaveis para reinicialização do quizz
+let resultadoDoQuizz,posNavegacaoQuiz, listaDeIndices=[],tituloResultado;
 
 //abrindo o quizz na página 2 pelo seu id
 function abrindoQuizz(quizzId){
     homeQuizz.classList.add("escondido");
+    exibicaoQuizz.classList.remove("escondido");
+    exibicaoQuizz.scrollIntoView();
+    idSelecionado = parseInt(quizzId);
+    identificandoQuizz();
+}
+//abrindo quizz criado na pagina 2 pelo seu id
+function abrindoQuizzCriado(quizzId){
+    criandoQuizz.classList.add("escondido");
     exibicaoQuizz.classList.remove("escondido");
     exibicaoQuizz.scrollIntoView();
     idSelecionado = parseInt(quizzId);
@@ -84,6 +93,7 @@ function renderizandoResposta(respostas,indiceDaPergunta){
 
         </div>
         `;
+        listaDeIndices.push(indiceDaPergunta);
     }
 }
 //definindo algoritmo para a escolha de uma resposta
@@ -128,9 +138,11 @@ function scrollarParaProximaPergunta(indiceDaPergunta){
         },2000);
     }
     else if(proximaPergunta===null){
-        const resultadoDoQuizz=document.querySelector(".resultado-do-quizz");
+        resultadoDoQuizz=document.querySelector(".resultado-do-quizz");
+        posNavegacaoQuiz = document.querySelector(".pos-navegacao-quizz");
         setTimeout(()=>{
             resultadoDoQuizz.classList.remove("escondido");
+            posNavegacaoQuiz.classList.remove("escondido");
             resultadoDoQuizz.scrollIntoView({block: "center", behavior:"smooth"});
         },2000);
         const quantidadeDeQuestões = objetoPerguntas.length;
@@ -140,15 +152,13 @@ function scrollarParaProximaPergunta(indiceDaPergunta){
 }
 //indentificando o level do resultado e mostrando na tela
 function construindoResultado(AbaDeResultado){
-    let tituloResultado=AbaDeResultado.querySelector(".titulo-do-resultado");
+    tituloResultado=AbaDeResultado.querySelector(".titulo-do-resultado");
     for(let i = objetoLeveis.length-1; i>=0;i--){
         const tituloLevel = objetoLeveis[i].title;
         const imagemLevel = objetoLeveis[i].image;
         const textoLevel = objetoLeveis[i].text;
         const porcentagemMinima = objetoLeveis[i].minValue;
         if(porcentagemAcertos>=porcentagemMinima){
-            console.log(porcentagemAcertos);
-            console.log(porcentagemMinima);
             tituloResultado.innerHTML=`<p>Você acertou ${porcentagemAcertos}%:
             ${tituloLevel}</p>
             `;
@@ -159,4 +169,33 @@ function construindoResultado(AbaDeResultado){
             break;
         }
     }
+}
+//reiniciando o quizz
+function reiniciandoQuizz(){
+    exibicaoQuizz.scrollIntoView({block:"start",behavior:"smooth"});
+    resultadoDoQuizz.classList.add("escondido");
+    posNavegacaoQuiz.classList.add("escondido");
+    const todosAsRespostas = [...document.querySelectorAll(".resposta-pergunta")];
+    const todosTextos=[...document.querySelectorAll(".resposta-pergunta p")];
+    todosTextos.forEach(texto=>texto.style.color="#000000");
+    todosAsRespostas.forEach(resposta=>{
+        resposta.classList.remove("diminuir-opacidade");
+    })
+    for(let i=0; i<todosAsRespostas.length; i++){
+        todosAsRespostas[i].classList.remove("diminuir-opacidade");
+        todosAsRespostas[i].setAttribute("onclick",`escolherResposta(this,${listaDeIndices[i]})`);
+    }
+    resultadoDoQuizz.innerHTML=`
+        <div class="titulo-do-resultado">
+                <!--aqui ficará o título do level-->
+        </div>
+        <!--aqui ficará a imagem e o texto do level-->`;
+    tituloResultado.innerHTML=``;
+    acertos=0;
+}
+//voltando para homequizz após finalização
+function voltarParaHomeQuizz(){
+    exibicaoQuizz.classList.add("escondido");
+    homeQuizz.classList.remove("escondido");
+    homeQuizz.scrollIntoView();
 }
