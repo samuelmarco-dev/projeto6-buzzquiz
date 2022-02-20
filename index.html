@@ -29,7 +29,7 @@
 
     <main>
 
-        <header class="flex">
+        <header class="flex" onclick="voltarParaHome()">
             <p>BuzzQuizz</p>
         </header>
 
@@ -102,6 +102,7 @@
                     </button>
                 </div>
             </article>
+            
             <article class="criacao-niveis escondido">
                 <p class="topo">Agora, decida os níveis!</p>
 
@@ -113,21 +114,22 @@
                     </button>
                 </div>
             </article>
+            
             <article class="confirmar-quizz escondido">
                 <p class="topo">Seu quizz está pronto</p>
                 <figure>
-                    <img src="./assets/logo-quizz-web.png" alt="Imagem Quizz">
-                    <figcaption>Quizz</figcaption>
+                    <div></div>
                 </figure>
                 <div class="flex">
                     <button>
                         <strong>Acessar Quizz</strong>
                     </button>
                 </div>
-                <div class="voltar-home" onclick="voltarParaHome(this)">
+                <div class="voltar-home" onclick="voltarParaHome()">
                     <p>Voltar pra home</p>
                 </div>
             </article>
+       
         </section>
 
     </main>
