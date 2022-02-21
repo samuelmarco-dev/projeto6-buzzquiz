@@ -130,14 +130,12 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
                 navegarEntreTelas(finalizarQuizz, 'confirmar-quizz')
             }, 500);
             mostrarFigureQuizzCriado();
-            console.log(resposta.data);
             idQuizzCriado = resposta.data.id;
 
             listaDeQuizzesCriados.push(idQuizzCriado);
             localStorage.setItem('quizzCriado', JSON.stringify(listaDeQuizzesCriados));
         })
         .catch((erro)=>{
-            console.log(erro.response);
             location.reload(true);
         })
 
@@ -150,23 +148,9 @@ function voltarParaHome(){
     location.reload(true);
 }
 
-// function JogarQuizz(){
-//     const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
-//     sairSessaoConfirmarQuizz.classList.add('escondido');
-
-//     const esconderSessao = document.querySelector('.criacao-de-quizz');
-//     esconderSessao.classList.add('escondido');
-
-//     const acessarQuizzCriado = document.querySelector('.exibicao-quizz');
-//     acessarQuizzCriado.classList.remove('escondido');
-    
-//     abrindoQuizzCriado(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
-// }
-
 // Verificação Tela de Informações básicas do Quizz
 function verificarInformacoesQuizz(){
     const inputInformacoes = [...document.querySelectorAll('.input-informacoes-basicas input')];
-    // console.log(inputInformacoes);
     validacaoInputInformacoes(inputInformacoes);
 }
 
@@ -268,7 +252,6 @@ function renderizarPerguntasNaTela(){
 function verificarInformacoesPergunta(){
     for(let index = 1; index <= qtdPerguntasQuizz; index++){
         const sectionPergunta = document.querySelector(`.criacao-perguntas .perguntas .pergunta-${index} section div`);
-        console.log(sectionPergunta);
         const inputTituloECor = [...sectionPergunta.querySelectorAll('.inputs input')];
         const inputRespostaCorreta = [...sectionPergunta.querySelectorAll(`.resposta-correta input`)];
         const inputRespostaIncorreta = [...sectionPergunta.querySelectorAll(`.resposta-incorreta input`)];
@@ -377,7 +360,6 @@ function verificarInformacoesPergunta(){
 }
 
 function verificarInputTitulosECorPerguntas(array){
-    console.log(array);
     tituloPergunta = array[0].value;
     corHexadecimalPergunta = array[1].value;
 
@@ -402,7 +384,6 @@ function verificarInputTitulosECorPerguntas(array){
 
 function aceitarCorHexadecimal(){
     for(item in objetoDeQuestions){
-        console.log(item + " - " + objetoDeQuestions[item].color);
         if((objetoDeQuestions[item].color.length !== 7) || (objetoDeQuestions[item].color.includes('#') === false)){
             booleancorHexadecimalPergunta = false;
         }
@@ -410,7 +391,6 @@ function aceitarCorHexadecimal(){
 }
 
 function verificarInputRespostasCorretas(array){
-    console.log(array);
     textoRespostaCorreta = array[0].value;
     urlRespostaCorreta = array[1].value;
 
@@ -434,7 +414,6 @@ function verificarInputRespostasCorretas(array){
 }
 
 function verificarInputRespostasIncorretas(array){
-    console.log(array);
     primeiraRespostaIncorreta = array[0].value;
     segundaRespostaIncorreta = array[2].value;
     terceiraRespostaIncorreta = array[4].value;
@@ -513,7 +492,6 @@ function verificarPeloMenosUmaRespostaIncorreta(){
 // Renderização e Verificação Tela de Criação de Perguntas do Quizz
 function renderizarNiveisNaTela(){
     const niveisDoQuizz = document.querySelector('.criacao-de-quizz .criacao-niveis .opcoes-niveis');
-    console.log(niveisDoQuizz);
     for(let index = 1; index <= qtdNiveisQuizz; index++){
         niveisDoQuizz.innerHTML += `
         <div class="niveis nivel-${index}" data-identifier="level">
@@ -542,9 +520,7 @@ function renderizarNiveisNaTela(){
 function verificarInformacoesNivel(){
     for(let index = 1; index <= qtdNiveisQuizz; index++){
         const divDeNivel = document.querySelector(`.criacao-de-quizz .criacao-niveis .opcoes-niveis .nivel-${index} section`);
-        console.log(divDeNivel);
         const inputInformacoesNivel = [...divDeNivel.querySelectorAll('.inputs input')];
-        console.log(inputInformacoesNivel)
         const descricaoNivel = divDeNivel.querySelector('textarea');
 
         verificarInformacoesDeNiveis(inputInformacoesNivel);
@@ -560,7 +536,6 @@ function verificarInformacoesNivel(){
 }
 
 function verificarInformacoesDeNiveis(array){
-    console.log(array)
     tituloNivel = array[0].value;
     acertoDoNivel = array[1].value;
     urlNivel = array[2].value;
@@ -595,7 +570,6 @@ function verificarInformacoesDeNiveis(array){
 }
 
 function verificarDescricaoDeNiveis(descricao){
-    console.log(descricao);
     descricaoDoNivel = descricao.value;
 
     if(descricaoDoNivel.length >= 30){
@@ -610,8 +584,6 @@ function verificarDescricaoDeNiveis(descricao){
 
 function aceitarPorcentagemMinimaDeNiveis(){
     for(let item in objetoDeLevels){
-        console.log(item + " - " + objetoDeLevels[item].minValue);
-        
         if(objetoDeLevels[item].minValue === '0'){
             auxiliarPorcentagemMinima ++;
         }
@@ -627,7 +599,6 @@ function aceitarPorcentagemMinimaDeNiveis(){
 
 function mostrarFigureQuizzCriado(){
     const figureDoQuizzCriado = document.querySelector('.confirmar-quizz figure');
-    console.log(figureDoQuizzCriado);
     figureDoQuizzCriado.innerHTML = `
         <div>
             <figcaption>${tituloQuizz}</figcaption>
@@ -635,6 +606,5 @@ function mostrarFigureQuizzCriado(){
     `;
 
     const gradienteImagem = figureDoQuizzCriado.querySelector('div');
-    console.log(gradienteImagem);
     gradienteImagem.style.background = `linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), no-repeat center/100% url(${urlQuizz})`;
 }

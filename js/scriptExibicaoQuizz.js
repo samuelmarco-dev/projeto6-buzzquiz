@@ -13,20 +13,13 @@ function abrindoQuizz(quizzId){
     exibicaoQuizz.classList.remove("escondido");
     exibicaoQuizz.scrollIntoView();
     idSelecionado = parseInt(quizzId);
-    identificandoQuizz();
+    identificandoQuizz(idSelecionado);
 }
-//abrindo quizz criado na pagina 2 pelo seu id
-function abrindoQuizzCriado(quizzId){
-    criandoQuizz.classList.add("escondido");
-    exibicaoQuizz.classList.remove("escondido");
-    exibicaoQuizz.scrollIntoView();
-    idSelecionado = parseInt(quizzId);
-    identificandoQuizz();
-}
+
 //identificando qual quizz deverá ser aberto
-function identificandoQuizz(){
+function identificandoQuizz(quizzSelecionado){
     for(let i=0; i<objetoQuizzes.length;i++){
-        if(objetoQuizzes[i].id===idSelecionado){
+        if(objetoQuizzes[i].id===quizzSelecionado){
             titulo=objetoQuizzes[i].title;
             urlImagem=objetoQuizzes[i].image;
             objetoPerguntas = objetoQuizzes[i].questions;
@@ -54,7 +47,7 @@ function colocarImagemNoTopo(){
 function renderizandoPerguntas(){
     objetoPerguntas.forEach(pergunta=>{
         exibicaoPerguntas.innerHTML+=`
-        <div class="exibicao-pergunta questao${objetoPerguntas.indexOf(pergunta)}">
+        <div data-identifier="question" class="exibicao-pergunta questao${objetoPerguntas.indexOf(pergunta)}">
             <div class="titulo-pergunta">
                 <p>${pergunta.title}</p>
             </div>
@@ -86,7 +79,7 @@ function renderizandoResposta(respostas,indiceDaPergunta){
     for(let i=0; i<respostas.length; i++){
         //dentro de cada "grupo de respostas", terá várias divs, cada uma contendo uma resposta
         grupoDeRespostas[indiceDaPergunta].innerHTML+=`
-        <div class="resposta-pergunta pergunta${indiceDaPergunta} resposta${respostas[i].isCorrectAnswer}" onclick="escolherResposta(this,${indiceDaPergunta})">
+        <div data-identifier="answer" class="resposta-pergunta pergunta${indiceDaPergunta} resposta${respostas[i].isCorrectAnswer}" onclick="escolherResposta(this,${indiceDaPergunta})">
 
            <img src="${respostas[i].image}" alt="Imagem que representa uma resposta">
            <p>${respostas[i].text}</p>
@@ -195,7 +188,5 @@ function reiniciandoQuizz(){
 }
 //voltando para homequizz após finalização
 function voltarParaHomeQuizz(){
-    exibicaoQuizz.classList.add("escondido");
-    homeQuizz.classList.remove("escondido");
-    homeQuizz.scrollIntoView();
+    voltarParaHome();
 }
