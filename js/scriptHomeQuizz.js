@@ -65,7 +65,7 @@ function colocandoImagemNoQuizz(areaDoQuiz){
 //colocando imagem no quizz do usuário
 function colocandoImagemNoQuizzDoUsuario(areaDoQuizDoUsuario){
     for(let i=0; i<areaDoQuizDoUsuario.length; i++){
-        areaDoQuizDoUsuario[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagensUsuario})`;
+        areaDoQuizDoUsuario[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagensUsuario[i]})`;
         areaDoQuizDoUsuario[i].style.backgroundSize = "340px 181px";
     }
 }
