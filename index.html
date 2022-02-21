@@ -32,21 +32,23 @@
         <header class="flex" onclick="voltarParaHome()">
             <p>BuzzQuizz</p>
         </header>
-
+        <section class="tela-de-carregamento">
+            <img src="assets/loading (1).gif" alt="Tela de carregamento">
+        </section>
         <section class="home-quizz">
-            <div class="seus-quizzes">
+            <section class="seus-quizzes">
                 <div class="quisezzs-locais-opcoes">
                     <h2>Seus Quizzes</h2>
                     <ion-icon data-identifier="create-quizz" onclick="criarQuizz()" name="add-circle"></ion-icon>
                 </div>
                 <div class="quizzes-lista"></div>
-            </div>
-            <div class="todos-quizzes">
+            </section>
+            <section class="todos-quizzes">
                 <h2>Todos os Quizzes:</h2>
                 <div class="quizzes-lista">    
                     <!--aqui será aberto os quizzes em geral-->
                 </div>
-            </div>
+            </section>
         </section>
         
         <section class="exibicao-quizz escondido">
@@ -56,15 +58,15 @@
             <div class="exibicao-perguntas">
                 <!--aqui ficará as perguntas e as respostas-->
             </div>
-            <div data-identifier="quizz-result" class="resultado-do-quizz escondido">
+            <article data-identifier="quizz-result" class="resultado-do-quizz escondido">
                 <div class="titulo-do-resultado">
                     <!--aqui ficará o título do level-->
                 </div>
-            </div>
-            <div class="pos-navegacao-quizz escondido">
+            </article>
+            <article class="pos-navegacao-quizz escondido">
                 <button class="reiniciar-quizz" onclick="reiniciandoQuizz()">Reiniciar Quizz</button>
                 <button class="voltar-para-homequizz" onclick="voltarParaHomeQuizz()">Voltar pra home</button>
-            </div>
+            </article>
         </section>
         
         <section class="criacao-de-quizz escondido">

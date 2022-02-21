@@ -1,5 +1,6 @@
 const api = "https://mock-api.driven.com.br/api/v4/buzzquizz/";
 const listaQuizzesLocais =document.querySelector(".seus-quizzes .quizzes-lista");
+const telaDeCarregamento = document.querySelector(".tela-de-carregamento");
 let objetoQuizzes, urlImagens=[], urlImagensUsuario=[];
 let listaTodosOsQuizzes = document.querySelector(".todos-quizzes .quizzes-lista");
 let listaQuizzesUsuario = document.querySelector(".seus-quizzes .quizzes-lista");
@@ -10,6 +11,7 @@ function pegandoTodosOsQuizzes(){
     requisicaoDosQuizzes.then(resultado =>{
         objetoQuizzes = resultado.data;
         renderQuizzes(objetoQuizzes);
+        telaDeCarregamento.classList.add("escondido");
     })
 }
 
@@ -30,15 +32,13 @@ function renderQuizzes(objetoQuizzes){
                 </article>
                 `;
             }
-            else{
-                //renderizando cada um dos quizzes
-                listaTodosOsQuizzes.innerHTML+=`
-                <article data-identifier="quizz-card" data-identifier="general-quizzes" onclick="abrindoQuizz('${id}')" class="quizz">
-                    <p>${titulo}</p>
-                </article>
-                `;
-            }
         })
+        //renderizando cada um dos quizzes
+        listaTodosOsQuizzes.innerHTML+=`
+        <article data-identifier="quizz-card" data-identifier="general-quizzes" onclick="abrindoQuizz('${id}')" class="quizz">
+            <p>${titulo}</p>
+        </article>
+        `;
     });
     let areaDoQuiz = [...document.querySelectorAll(".quizz")];
     let areaDoQuizDoUsuario = [...document.querySelectorAll(".quizz-do-usuario")];
@@ -60,14 +60,14 @@ function conferindoQuizzesLocais(){
 //colocando imagem no quizz pelo backgroundo do css
 function colocandoImagemNoQuizz(areaDoQuiz){
     for(let i=0; i<areaDoQuiz.length; i++){
-        areaDoQuiz[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagens[i]})`;
+        areaDoQuiz[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagens[i]})`;
         areaDoQuiz[i].style.backgroundSize = "340px 181px";
     }
 }
 //colocando imagem no quizz do usuário
 function colocandoImagemNoQuizzDoUsuario(areaDoQuizDoUsuario){
     for(let i=0; i<areaDoQuizDoUsuario.length; i++){
-        areaDoQuizDoUsuario[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagensUsuario[i]})`;
+        areaDoQuizDoUsuario[i].style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${urlImagensUsuario[i]})`;
         areaDoQuizDoUsuario[i].style.backgroundSize = "340px 181px";
     }
 }
@@ -78,19 +78,17 @@ function criarQuizz(){
 }
 //abrindo quizz criado 
 function jogandoQuizzCriado(){
+    telaDeCarregamento.classList.remove("escondido");
     const requisicaoDosQuizzes = axios.get(`${api}quizzes`);
     requisicaoDosQuizzes.then(resultado =>{
         objetoQuizzes = resultado.data;
-        console.log(resultado.data);
         for(let i=0; i<objetoQuizzes.length; i++){
             if(objetoQuizzes[i].id==listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]){
-                console.log(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
-                console.log(objetoQuizzes[i].id);
                 abrindoQuizz(objetoQuizzes[i].id);
                 break;
             }
         }
-        
+        telaDeCarregamento.classList.add("escondido");
     })
 }
 //chamando funções

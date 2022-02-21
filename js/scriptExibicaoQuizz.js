@@ -9,6 +9,7 @@ let resultadoDoQuizz,posNavegacaoQuiz, listaDeIndices=[],tituloResultado;
 
 //abrindo o quizz na página 2 pelo seu id
 function abrindoQuizz(quizzId){
+    telaDeCarregamento.classList.remove("escondido");
     homeQuizz.classList.add("escondido");
     exibicaoQuizz.classList.remove("escondido");
     exibicaoQuizz.scrollIntoView();
@@ -45,16 +46,17 @@ function colocarImagemNoTopo(){
 }
 //renderizando as perguntas na tela
 function renderizandoPerguntas(){
+    telaDeCarregamento.classList.add("escondido");
     objetoPerguntas.forEach(pergunta=>{
         exibicaoPerguntas.innerHTML+=`
-        <div data-identifier="question" class="exibicao-pergunta questao${objetoPerguntas.indexOf(pergunta)}">
+        <article data-identifier="question" class="exibicao-pergunta questao${objetoPerguntas.indexOf(pergunta)}">
             <div class="titulo-pergunta">
                 <p>${pergunta.title}</p>
             </div>
             <div class="respostas-pergunta">
             
             </div>
-        </div>
+        </article>
         `
         //embaralhando array de respostas
         let respostasEmbaralhadas = pergunta.answers;
