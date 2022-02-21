@@ -111,10 +111,10 @@ function entrarTelaCriacaoNiveis(prosseguirNiveis){
 function entrarTelaConfirmarQuizz(finalizarQuizz){
     verificarInformacoesNivel();
     aceitarPorcentagemMinimaDeNiveis();
-    while(booleanTituloNivel !== true && booleanUrlNivel !== true && booleanAcertoDoNivel !== true && booleanDescricaoNivel !== true && booleanAceitarPorcentagemMinima !== true){
+    /*while(booleanTituloNivel !== true && booleanUrlNivel !== true && booleanAcertoDoNivel !== true && booleanDescricaoNivel !== true && booleanAceitarPorcentagemMinima !== true){
         verificarInformacoesNivel();
         aceitarPorcentagemMinimaDeNiveis(); 
-    }
+    }*/
 
     if(booleanTituloNivel === true && booleanUrlNivel === true && booleanAcertoDoNivel === true && booleanDescricaoNivel === true && booleanAceitarPorcentagemMinima === true){
         objetoQuizzCriado = {

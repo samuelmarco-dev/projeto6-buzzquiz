@@ -43,6 +43,9 @@
     padding: 18px;
     margin-top: 28px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 /*css para o título da pergunta*/
 .titulo-pergunta, .titulo-do-resultado{
@@ -96,11 +99,15 @@
 }
 .resultado-do-quizz img{
     width: 340px;
+    margin-bottom: 9px;
 }
-.resultado-do-quizz span{
+strong{
+    font-style: normal;
+    font-weight: bold;
     font-size: 17px;
     line-height: 20px;
     color: #484848;
+    text-align: start;
 }
 /*css para pos-navegação*/
 .pos-navegacao-quizz{
@@ -136,4 +143,56 @@
 .resposta-pergunta:hover{
     cursor: pointer;
     background-color: #dadada;
+}
+
+@media (min-width: 1100px){
+    .exibicao-pergunta,.resultado-do-quizz{
+        width: 759px;
+        padding: 28px;
+        margin-top: 42px;
+    }
+    .resultado-do-quizz{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .exibicao-quizz{
+        min-width: unset;
+    }
+    .imagem-topo{
+        height: 227px;
+    }
+    .imagem-topo h1{
+        font-size: 39px;
+        line-height: 46px;
+    }
+
+    .titulo-pergunta, .titulo-do-resultado{
+        height: 138px;
+        margin-bottom: 18px;
+    }
+    .titulo-pergunta p, .titulo-do-resultado p{
+        font-size: 23px;
+        line-height: 27px;
+    }
+    .resposta-pergunta{
+        width: 330px;
+    }
+    .resposta-pergunta img{
+        width: 330px;
+        height: 175px;
+    }
+    .resposta-pergunta p{
+        font-size: 20px;
+        line-height: 23px;
+    }
+    .resultado-do-quizz img{
+        width: 364px;
+    }
+    .texto-resultado{
+        min-height: 40px;
+        max-width: 328px;
+        overflow: hidden;
+    }
 }

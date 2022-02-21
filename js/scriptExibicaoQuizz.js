@@ -163,8 +163,8 @@ function construindoResultado(AbaDeResultado){
             ${tituloLevel}</p>
             `;
             AbaDeResultado.innerHTML+=`
-            <img src="${imagemLevel}" alt="imagem do lovel">
-            <p><span>${textoLevel}</span></p>
+            <img src="${imagemLevel}" alt="imagem do level">
+            <div class="texto-resultado"><p><strong>${textoLevel}</strong></p></div>
             `;
             break;
         }

@@ -27,6 +27,7 @@ body{
 .quisezzs-locais-opcoes{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .quisezzs-locais-opcoes ion-icon{
     font-size: 31px;
@@ -62,7 +63,7 @@ body{
     transition: all linear 0.1s;
 }
 /*css para apresentação do quiz individual*/
-.quizz{
+.quizz,.quizz-do-usuario{
     width: 340px;
     height: 181px;
     margin-top: 14px;
@@ -74,7 +75,7 @@ body{
     padding: 0px 18px 7px 18px;
 }
 
-.quizz p{
+.quizz p,.quizz-do-usuario p{
     color: white;
     font-size: 19px;
     line-height: 22px;
@@ -96,6 +97,32 @@ body{
     cursor: pointer;
     transform:rotate(180deg);
 }
-.quizz:hover{
+.quizz:hover, .quizz-do-usuario:hover{
     cursor: pointer;
+}
+@media (min-width: 1100px){
+    .home-quizz{
+        min-width:unset;
+    }
+    .todos-quizzes, .seus-quizzes{
+        min-width:unset;
+        max-width: 1100px;
+    }
+    .quizzes-lista{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .quisezzs-locais-opcoes{
+        justify-content:unset;
+    }
+    .quisezzs-locais-opcoes ion-icon{
+        margin-left: 26px;
+    }
+    .seus-quizzes{
+        width: 100%;
+    }
+    .sem-quizz{
+        width: 100%;
+    }
 }
