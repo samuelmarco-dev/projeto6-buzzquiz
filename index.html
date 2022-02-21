@@ -91,7 +91,7 @@
             </article>
 
             <article class="criacao-perguntas escondido">
-                <p class="topo">Comece pelo começo</p>
+                <p class="topo">Crie suas perguntas</p>
 
                 <div class="perguntas"></div>
 
@@ -141,7 +141,21 @@
     <script src="./js/scriptCriacaoQuizz.js"></script>
     <script src="./js/scriptHomeQuizz.js"></script>
     <script src="./js/scriptExibicaoQuizz.js"></script>
-    
+
+    <script>
+    function JogarQuizz(){
+        const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
+        sairSessaoConfirmarQuizz.classList.add('escondido');
+
+        const esconderSessao = document.querySelector('.criacao-de-quizz');
+        esconderSessao.classList.add('escondido');
+
+        const acessarQuizzCriado = document.querySelector('.exibicao-quizz');
+        acessarQuizzCriado.classList.remove('escondido');
+        
+        abrindoQuizzCriado(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
+    }   
+    </script>
 
 </body>
 </html>

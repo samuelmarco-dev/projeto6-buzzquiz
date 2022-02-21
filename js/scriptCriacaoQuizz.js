@@ -128,7 +128,7 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
         .then((resposta)=>{
             setTimeout(()=>{
                 navegarEntreTelas(finalizarQuizz, 'confirmar-quizz')
-            }, 900);
+            }, 500);
             mostrarFigureQuizzCriado();
             console.log(resposta.data);
             idQuizzCriado = resposta.data.id;
@@ -150,18 +150,18 @@ function voltarParaHome(){
     location.reload(true);
 }
 
-function JogarQuizz(){
-    const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
-    sairSessaoConfirmarQuizz.classList.add('escondido');
+// function JogarQuizz(){
+//     const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
+//     sairSessaoConfirmarQuizz.classList.add('escondido');
 
-    const esconderSessao = document.querySelector('.criacao-de-quizz');
-    esconderSessao.classList.add('escondido');
+//     const esconderSessao = document.querySelector('.criacao-de-quizz');
+//     esconderSessao.classList.add('escondido');
 
-    const acessarQuizzCriado = document.querySelector('.exibicao-quizz');
-    acessarQuizzCriado.classList.remove('escondido');
+//     const acessarQuizzCriado = document.querySelector('.exibicao-quizz');
+//     acessarQuizzCriado.classList.remove('escondido');
     
-    // abrindoQuizzCriado(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
-}
+//     abrindoQuizzCriado(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
+// }
 
 // Verificação Tela de Informações básicas do Quizz
 function verificarInformacoesQuizz(){
@@ -223,8 +223,8 @@ function renderizarPerguntasNaTela(){
     
     for(let index = 1; index <= qtdPerguntasQuizz; index++){
     perguntasDoQuizz.innerHTML += `
-    <div class="pergunta pergunta-${index}">
-        <div class="visualizacao-inicial" onclick="acessarOpcoes(this)">
+    <div class="pergunta pergunta-${index}" data-identifier="question">
+        <div class="visualizacao-inicial" onclick="acessarOpcoes(this)" data-identifier="expand">
             <p>Pergunta ${index}</p>
             <ion-icon name="create-outline"></ion-icon>
         </div>
@@ -250,13 +250,13 @@ function renderizarPerguntasNaTela(){
                     <span>obrigatório</span>
                     <input type="text" placeholder="Resposta incorreta 1">
                     <span>obrigatório</span>
-                    <input type="text" placeholder="URL da imagem">
+                    <input type="text" placeholder="URL da imagem 1">
 
                     <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="text" placeholder="URL da imagem">
+                    <input type="text" placeholder="URL da imagem 2">
 
                     <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="text" placeholder="URL da imagem">
+                    <input type="text" placeholder="URL da imagem 3">
                 </div>
         
             </div>
@@ -516,8 +516,8 @@ function renderizarNiveisNaTela(){
     console.log(niveisDoQuizz);
     for(let index = 1; index <= qtdNiveisQuizz; index++){
         niveisDoQuizz.innerHTML += `
-        <div class="niveis nivel-${index}">
-            <div class="visualizacao-inicial" onclick="acessarOpcoes(this)">
+        <div class="niveis nivel-${index}" data-identifier="level">
+            <div class="visualizacao-inicial" onclick="acessarOpcoes(this)" data-identifier="expand">
                 <p>Nível ${index}</p>
                 <ion-icon name="create-outline"></ion-icon>
             </div>
