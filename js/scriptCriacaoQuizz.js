@@ -111,10 +111,10 @@ function entrarTelaCriacaoNiveis(prosseguirNiveis){
 function entrarTelaConfirmarQuizz(finalizarQuizz){
     verificarInformacoesNivel();
     aceitarPorcentagemMinimaDeNiveis();
-    /*while(booleanTituloNivel !== true && booleanUrlNivel !== true && booleanAcertoDoNivel !== true && booleanDescricaoNivel !== true && booleanAceitarPorcentagemMinima !== true){
-        verificarInformacoesNivel();
-        aceitarPorcentagemMinimaDeNiveis(); 
-    }*/
+    // while(booleanTituloNivel !== true && booleanUrlNivel !== true && booleanAcertoDoNivel !== true && booleanDescricaoNivel !== true && booleanAceitarPorcentagemMinima !== true){
+    //     verificarInformacoesNivel();
+    //     aceitarPorcentagemMinimaDeNiveis(); 
+    // }
 
     if(booleanTituloNivel === true && booleanUrlNivel === true && booleanAcertoDoNivel === true && booleanDescricaoNivel === true && booleanAceitarPorcentagemMinima === true){
         objetoQuizzCriado = {
@@ -126,7 +126,9 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
         
         axios.post(urlDeEnvio, objetoQuizzCriado)
         .then((resposta)=>{
-            navegarEntreTelas(finalizarQuizz, 'confirmar-quizz');
+            setTimeout(()=>{
+                navegarEntreTelas(finalizarQuizz, 'confirmar-quizz')
+            }, 900);
             mostrarFigureQuizzCriado();
             console.log(resposta.data);
             idQuizzCriado = resposta.data.id;
@@ -146,6 +148,19 @@ function entrarTelaConfirmarQuizz(finalizarQuizz){
 
 function voltarParaHome(){
     location.reload(true);
+}
+
+function JogarQuizz(){
+    const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
+    sairSessaoConfirmarQuizz.classList.add('escondido');
+
+    const esconderSessao = document.querySelector('.criacao-de-quizz');
+    esconderSessao.classList.add('escondido');
+
+    const acessarQuizzCriado = document.querySelector('.exibicao-quizz');
+    acessarQuizzCriado.classList.remove('escondido');
+    
+    // abrindoQuizzCriado(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
 }
 
 // Verificação Tela de Informações básicas do Quizz
