@@ -6,7 +6,7 @@ O primeiro projetão será a implementação de um **sistema de Quizzes em HTML,
 ---
 ⚡ [Repositório GitHub](https://github.com/samuelmarco-dev/projeto6-buzzquiz)
 
-⚡ [Projeto no ar com GitPages]()
+⚡ [Projeto no ar com GitPages](https://samuelmarco-dev.github.io/projeto6-buzzquiz/)
 
 ---
 ### Baixar o Repositório do Projeto
