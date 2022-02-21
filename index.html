@@ -37,7 +37,7 @@
             <div class="seus-quizzes">
                 <div class="quisezzs-locais-opcoes">
                     <h2>Seus Quizzes</h2>
-                    <ion-icon onclick="criarQuizz()" name="add-circle"></ion-icon>
+                    <ion-icon data-identifier="create-quizz" onclick="criarQuizz()" name="add-circle"></ion-icon>
                 </div>
                 <div class="quizzes-lista"></div>
             </div>
@@ -56,7 +56,7 @@
             <div class="exibicao-perguntas">
                 <!--aqui ficará as perguntas e as respostas-->
             </div>
-            <div class="resultado-do-quizz escondido">
+            <div data-identifier="quizz-result" class="resultado-do-quizz escondido">
                 <div class="titulo-do-resultado">
                     <!--aqui ficará o título do level-->
                 </div>
@@ -141,7 +141,13 @@
     <script src="./js/scriptCriacaoQuizz.js"></script>
     <script src="./js/scriptHomeQuizz.js"></script>
     <script src="./js/scriptExibicaoQuizz.js"></script>
-    
+    <script>
+        function JogarQuizz(){
+    const sairSessaoConfirmarQuizz = document.querySelector('.confirmar-quizz');
+    sairSessaoConfirmarQuizz.classList.add('escondido');
+    jogandoQuizzCriado();
+   }
+    </script>
 
 </body>
 </html>

@@ -25,18 +25,20 @@ function renderQuizzes(objetoQuizzes){
             if(idDoUsuario==id){
                 urlImagensUsuario.push(objetoquizz.image);
                 listaQuizzesUsuario.innerHTML+=`
-                <article onclick="abrindoQuizz('${id}')" class="quizz-do-usuario">
+                <article data-identifier="quizz-card" data-identifier="user-quizzes" onclick="abrindoQuizz('${id}')" class="quizz-do-usuario">
+                    <p>${titulo}</p>
+                </article>
+                `;
+            }
+            else{
+                //renderizando cada um dos quizzes
+                listaTodosOsQuizzes.innerHTML+=`
+                <article data-identifier="quizz-card" data-identifier="general-quizzes" onclick="abrindoQuizz('${id}')" class="quizz">
                     <p>${titulo}</p>
                 </article>
                 `;
             }
         })
-        //renderizando cada um dos quizzes
-        listaTodosOsQuizzes.innerHTML+=`
-            <article onclick="abrindoQuizz('${id}')" class="quizz">
-                <p>${titulo}</p>
-            </article>
-        `;
     });
     let areaDoQuiz = [...document.querySelectorAll(".quizz")];
     let areaDoQuizDoUsuario = [...document.querySelectorAll(".quizz-do-usuario")];
@@ -50,7 +52,7 @@ function conferindoQuizzesLocais(){
         listaQuizzesLocais.parentNode.innerHTML=`
             <article class="sem-quizz">
                 <p>Você não criou nenhum <br> quizz ainda :(</p>
-                <button onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
+                <button data-identifier="create-quizz" onclick="criarQuizz()" class="criar-quizz">Criar Quizz</button>
             </article>
         `;
     }
@@ -73,6 +75,23 @@ function colocandoImagemNoQuizzDoUsuario(areaDoQuizDoUsuario){
 function criarQuizz(){
     homeQuizz.classList.add("escondido");
     criandoQuizz.classList.remove("escondido");
+}
+//abrindo quizz criado 
+function jogandoQuizzCriado(){
+    const requisicaoDosQuizzes = axios.get(`${api}quizzes`);
+    requisicaoDosQuizzes.then(resultado =>{
+        objetoQuizzes = resultado.data;
+        console.log(resultado.data);
+        for(let i=0; i<objetoQuizzes.length; i++){
+            if(objetoQuizzes[i].id==listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]){
+                console.log(listaDeQuizzesCriados[listaDeQuizzesCriados.length-1]);
+                console.log(objetoQuizzes[i].id);
+                abrindoQuizz(objetoQuizzes[i].id);
+                break;
+            }
+        }
+        
+    })
 }
 //chamando funções
 pegandoTodosOsQuizzes();
